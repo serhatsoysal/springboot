@@ -1,4 +1,8 @@
 ![Build Status](https://github.com/serhatsoysal/distributed-banking-system/actions/workflows/ci.yml/badge.svg)
+![CodeQL](https://github.com/serhatsoysal/distributed-banking-system/actions/workflows/codeql.yml/badge.svg)
+![Java](https://img.shields.io/badge/Java-21-orange.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-brightgreen.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 # Enterprise Banking Microservices Platform
 
