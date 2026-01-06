@@ -4,11 +4,14 @@ import com.banking.account.dto.AccountResponse;
 import com.banking.account.service.AccountService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+
+import com.banking.account.config.SecurityConfig;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,10 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(AccountController.class)
-@TestPropertySource(properties = {
-    "spring.cloud.discovery.enabled=false",
-    "spring.cloud.config.enabled=false"
-})
+@AutoConfigureMockMvc(addFilters = false)
 class AccountControllerTest {
 
     @Autowired
@@ -32,7 +32,6 @@ class AccountControllerTest {
     private AccountService accountService;
 
     @Test
-    @WithMockUser(roles = "USER")
     void shouldGetAccountById() throws Exception {
         AccountResponse response = new AccountResponse(1L, "1234567890", 1L, "John Doe", 
             "SAVINGS", BigDecimal.valueOf(1000), "USD", "ACTIVE", LocalDateTime.now());
