@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: account-service
+  config:
+    import: optional:configserver:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: test
+    password: test
+
