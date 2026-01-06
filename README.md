@@ -285,10 +285,21 @@ Event-driven notifications with Kafka consumer.
 
 ### Setup
 
-**1. Configuration (Optional):**
+**1. Environment Configuration:**
 ```bash
-# Default .env file is already created
-# Edit if you need custom settings
+# Copy the example environment file
+cp .env.example .env
+
+# Generate a secure JWT secret (Linux/Mac)
+openssl rand -base64 64
+
+# Or use PowerShell (Windows)
+$rng = New-Object System.Security.Cryptography.RNGCryptoServiceProvider
+$bytes = New-Object byte[] 64
+$rng.GetBytes($bytes)
+[Convert]::ToBase64String($bytes)
+
+# Edit .env and replace JWT_SECRET with your generated key
 notepad .env  # Windows
 nano .env     # Linux/Mac
 ```
